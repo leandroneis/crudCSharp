@@ -40,15 +40,15 @@ namespace CrudAula
             this.tbDescricao = new System.Windows.Forms.TextBox();
             this.tbAno = new System.Windows.Forms.TextBox();
             this.dgLocadora = new System.Windows.Forms.DataGridView();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnDeletar = new System.Windows.Forms.Button();
-            this.tbId = new System.Windows.Forms.TextBox();
-            this.lbId = new System.Windows.Forms.Label();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ano = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnInativar = new System.Windows.Forms.Button();
+            this.tbId = new System.Windows.Forms.TextBox();
+            this.lbId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgLocadora)).BeginInit();
             this.SuspendLayout();
             // 
@@ -154,43 +154,6 @@ namespace CrudAula
             this.dgLocadora.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLocadora_CellContentClick);
             this.dgLocadora.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLocadora_CellContentClick);
             // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Location = new System.Drawing.Point(272, 97);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
-            this.btnAlterar.TabIndex = 13;
-            this.btnAlterar.Text = "Alterar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            // 
-            // btnDeletar
-            // 
-            this.btnDeletar.Location = new System.Drawing.Point(353, 97);
-            this.btnDeletar.Name = "btnDeletar";
-            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
-            this.btnDeletar.TabIndex = 14;
-            this.btnDeletar.Text = "Deletar";
-            this.btnDeletar.UseVisualStyleBackColor = true;
-            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
-            // 
-            // tbId
-            // 
-            this.tbId.Enabled = false;
-            this.tbId.Location = new System.Drawing.Point(12, 49);
-            this.tbId.Name = "tbId";
-            this.tbId.Size = new System.Drawing.Size(38, 20);
-            this.tbId.TabIndex = 16;
-            // 
-            // lbId
-            // 
-            this.lbId.AutoSize = true;
-            this.lbId.Location = new System.Drawing.Point(12, 29);
-            this.lbId.Name = "lbId";
-            this.lbId.Size = new System.Drawing.Size(19, 13);
-            this.lbId.TabIndex = 15;
-            this.lbId.Text = "Id:";
-            // 
             // id
             // 
             this.id.HeaderText = "Id";
@@ -229,6 +192,43 @@ namespace CrudAula
             this.ano.Name = "ano";
             this.ano.ReadOnly = true;
             // 
+            // btnAlterar
+            // 
+            this.btnAlterar.Location = new System.Drawing.Point(272, 97);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlterar.TabIndex = 13;
+            this.btnAlterar.Text = "Alterar";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            // 
+            // btnInativar
+            // 
+            this.btnInativar.Location = new System.Drawing.Point(353, 97);
+            this.btnInativar.Name = "btnInativar";
+            this.btnInativar.Size = new System.Drawing.Size(75, 23);
+            this.btnInativar.TabIndex = 14;
+            this.btnInativar.Text = "Inativar";
+            this.btnInativar.UseVisualStyleBackColor = true;
+            this.btnInativar.Click += new System.EventHandler(this.btnInativar_Click);
+            // 
+            // tbId
+            // 
+            this.tbId.Enabled = false;
+            this.tbId.Location = new System.Drawing.Point(12, 49);
+            this.tbId.Name = "tbId";
+            this.tbId.Size = new System.Drawing.Size(38, 20);
+            this.tbId.TabIndex = 16;
+            // 
+            // lbId
+            // 
+            this.lbId.AutoSize = true;
+            this.lbId.Location = new System.Drawing.Point(12, 29);
+            this.lbId.Name = "lbId";
+            this.lbId.Size = new System.Drawing.Size(19, 13);
+            this.lbId.TabIndex = 15;
+            this.lbId.Text = "Id:";
+            // 
             // Locadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -236,7 +236,7 @@ namespace CrudAula
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tbId);
             this.Controls.Add(this.lbId);
-            this.Controls.Add(this.btnDeletar);
+            this.Controls.Add(this.btnInativar);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.dgLocadora);
             this.Controls.Add(this.tbAno);
@@ -273,7 +273,7 @@ namespace CrudAula
         private System.Windows.Forms.TextBox tbAno;
         private System.Windows.Forms.DataGridView dgLocadora;
         private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnDeletar;
+        private System.Windows.Forms.Button btnInativar;
         private System.Windows.Forms.TextBox tbId;
         private System.Windows.Forms.Label lbId;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;

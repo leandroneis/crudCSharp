@@ -120,9 +120,29 @@ namespace CrudAula
             }
         }
 
-        private void btnDeletar_Click(object sender, EventArgs e)
+        private void btnInativar_Click(object sender, EventArgs e)
         {
+            MySqlConnectionStringBuilder conexaoBD = conexaoBanco();
+            MySqlConnection realizaConexaoBD = new MySqlConnection(conexaoBD.ToString());
+            try
+            {
+                realizaConexaoBD.Open();
+                MySqlCommand comandoMysql = realizaConexaoBD.CreateCommand();
 
+                //Se quiser excluir do banco de dados o registro descomente a linha abaixo e comente a linha 134
+                //comandoMysql.CommandText = "DELETE FROM locadora WHERE id = " + tbId.Text + "";
+                comandoMysql.CommandText = "UPDATE locadora SET ativoFilme = 0 WHERE id = " + tbId.Text + "";
+                Console.WriteLine(comandoMysql.CommandText);
+                comandoMysql.ExecuteNonQuery();
+                realizaConexaoBD.Close();
+                MessageBox.Show("Deletado com sucesso!");
+                atualizarGrid();
+                limparCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open Connection!");
+            }
         }
 
         private void dgLocadora_CellContentClick(object sender, DataGridViewCellEventArgs e)
