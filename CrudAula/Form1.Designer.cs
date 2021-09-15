@@ -40,20 +40,22 @@ namespace CrudAula
             this.tbDescricao = new System.Windows.Forms.TextBox();
             this.tbAno = new System.Windows.Forms.TextBox();
             this.dgLocadora = new System.Windows.Forms.DataGridView();
-            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnDeletar = new System.Windows.Forms.Button();
+            this.tbId = new System.Windows.Forms.TextBox();
+            this.lbId = new System.Windows.Forms.Label();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ano = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgLocadora)).BeginInit();
             this.SuspendLayout();
             // 
             // lbNome
             // 
             this.lbNome.AutoSize = true;
-            this.lbNome.Location = new System.Drawing.Point(12, 27);
+            this.lbNome.Location = new System.Drawing.Point(56, 29);
             this.lbNome.Name = "lbNome";
             this.lbNome.Size = new System.Drawing.Size(38, 13);
             this.lbNome.TabIndex = 0;
@@ -62,7 +64,7 @@ namespace CrudAula
             // lbCategoria
             // 
             this.lbCategoria.AutoSize = true;
-            this.lbCategoria.Location = new System.Drawing.Point(173, 27);
+            this.lbCategoria.Location = new System.Drawing.Point(217, 29);
             this.lbCategoria.Name = "lbCategoria";
             this.lbCategoria.Size = new System.Drawing.Size(55, 13);
             this.lbCategoria.TabIndex = 1;
@@ -71,7 +73,7 @@ namespace CrudAula
             // lbDescricao
             // 
             this.lbDescricao.AutoSize = true;
-            this.lbDescricao.Location = new System.Drawing.Point(337, 27);
+            this.lbDescricao.Location = new System.Drawing.Point(381, 29);
             this.lbDescricao.Name = "lbDescricao";
             this.lbDescricao.Size = new System.Drawing.Size(58, 13);
             this.lbDescricao.TabIndex = 2;
@@ -80,7 +82,7 @@ namespace CrudAula
             // lbAno
             // 
             this.lbAno.AutoSize = true;
-            this.lbAno.Location = new System.Drawing.Point(627, 27);
+            this.lbAno.Location = new System.Drawing.Point(671, 29);
             this.lbAno.Name = "lbAno";
             this.lbAno.Size = new System.Drawing.Size(29, 13);
             this.lbAno.TabIndex = 3;
@@ -108,74 +110,49 @@ namespace CrudAula
             // 
             // tbNome
             // 
-            this.tbNome.Location = new System.Drawing.Point(12, 58);
+            this.tbNome.Location = new System.Drawing.Point(56, 49);
             this.tbNome.Name = "tbNome";
             this.tbNome.Size = new System.Drawing.Size(158, 20);
             this.tbNome.TabIndex = 8;
             // 
             // tbCategoria
             // 
-            this.tbCategoria.Location = new System.Drawing.Point(176, 58);
+            this.tbCategoria.Location = new System.Drawing.Point(220, 49);
             this.tbCategoria.Name = "tbCategoria";
             this.tbCategoria.Size = new System.Drawing.Size(158, 20);
             this.tbCategoria.TabIndex = 9;
             // 
             // tbDescricao
             // 
-            this.tbDescricao.Location = new System.Drawing.Point(340, 58);
+            this.tbDescricao.Location = new System.Drawing.Point(384, 49);
             this.tbDescricao.Name = "tbDescricao";
             this.tbDescricao.Size = new System.Drawing.Size(284, 20);
             this.tbDescricao.TabIndex = 10;
             // 
             // tbAno
             // 
-            this.tbAno.Location = new System.Drawing.Point(630, 58);
+            this.tbAno.Location = new System.Drawing.Point(674, 49);
             this.tbAno.Name = "tbAno";
-            this.tbAno.Size = new System.Drawing.Size(158, 20);
+            this.tbAno.Size = new System.Drawing.Size(73, 20);
             this.tbAno.TabIndex = 11;
             // 
             // dgLocadora
             // 
+            this.dgLocadora.AllowUserToDeleteRows = false;
             this.dgLocadora.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgLocadora.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.codigo,
+            this.id,
             this.nome,
             this.categoria,
             this.descricao,
             this.ano});
             this.dgLocadora.Location = new System.Drawing.Point(12, 150);
             this.dgLocadora.Name = "dgLocadora";
+            this.dgLocadora.ReadOnly = true;
             this.dgLocadora.Size = new System.Drawing.Size(777, 289);
             this.dgLocadora.TabIndex = 12;
-            // 
-            // codigo
-            // 
-            this.codigo.HeaderText = "ID";
-            this.codigo.Name = "codigo";
-            this.codigo.Width = 30;
-            // 
-            // nome
-            // 
-            this.nome.HeaderText = "Nome";
-            this.nome.Name = "nome";
-            this.nome.Width = 170;
-            // 
-            // categoria
-            // 
-            this.categoria.HeaderText = "Categoria";
-            this.categoria.Name = "categoria";
-            this.categoria.Width = 150;
-            // 
-            // descricao
-            // 
-            this.descricao.HeaderText = "Descricao";
-            this.descricao.Name = "descricao";
-            this.descricao.Width = 300;
-            // 
-            // ano
-            // 
-            this.ano.HeaderText = "Ano";
-            this.ano.Name = "ano";
+            this.dgLocadora.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLocadora_CellContentClick);
+            this.dgLocadora.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgLocadora_CellContentClick);
             // 
             // btnAlterar
             // 
@@ -185,22 +162,81 @@ namespace CrudAula
             this.btnAlterar.TabIndex = 13;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
-            // btnExcluir
+            // btnDeletar
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(353, 97);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
-            this.btnExcluir.TabIndex = 14;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnDeletar.Location = new System.Drawing.Point(353, 97);
+            this.btnDeletar.Name = "btnDeletar";
+            this.btnDeletar.Size = new System.Drawing.Size(75, 23);
+            this.btnDeletar.TabIndex = 14;
+            this.btnDeletar.Text = "Deletar";
+            this.btnDeletar.UseVisualStyleBackColor = true;
+            this.btnDeletar.Click += new System.EventHandler(this.btnDeletar_Click);
+            // 
+            // tbId
+            // 
+            this.tbId.Enabled = false;
+            this.tbId.Location = new System.Drawing.Point(12, 49);
+            this.tbId.Name = "tbId";
+            this.tbId.Size = new System.Drawing.Size(38, 20);
+            this.tbId.TabIndex = 16;
+            // 
+            // lbId
+            // 
+            this.lbId.AutoSize = true;
+            this.lbId.Location = new System.Drawing.Point(12, 29);
+            this.lbId.Name = "lbId";
+            this.lbId.Size = new System.Drawing.Size(19, 13);
+            this.lbId.TabIndex = 15;
+            this.lbId.Text = "Id:";
+            // 
+            // id
+            // 
+            this.id.HeaderText = "Id";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Width = 30;
+            // 
+            // nome
+            // 
+            this.nome.DataPropertyName = "nomeFilme";
+            this.nome.HeaderText = "Nome";
+            this.nome.Name = "nome";
+            this.nome.ReadOnly = true;
+            this.nome.Width = 170;
+            // 
+            // categoria
+            // 
+            this.categoria.DataPropertyName = "categoriaFilme";
+            this.categoria.HeaderText = "Categoria";
+            this.categoria.Name = "categoria";
+            this.categoria.ReadOnly = true;
+            this.categoria.Width = 150;
+            // 
+            // descricao
+            // 
+            this.descricao.DataPropertyName = "descricaoFilme";
+            this.descricao.HeaderText = "Descricao";
+            this.descricao.Name = "descricao";
+            this.descricao.ReadOnly = true;
+            this.descricao.Width = 300;
+            // 
+            // ano
+            // 
+            this.ano.DataPropertyName = "anoFilme";
+            this.ano.HeaderText = "Ano";
+            this.ano.Name = "ano";
+            this.ano.ReadOnly = true;
             // 
             // Locadora
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.tbId);
+            this.Controls.Add(this.lbId);
+            this.Controls.Add(this.btnDeletar);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.dgLocadora);
             this.Controls.Add(this.tbAno);
@@ -214,6 +250,7 @@ namespace CrudAula
             this.Controls.Add(this.lbCategoria);
             this.Controls.Add(this.lbNome);
             this.Name = "Locadora";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Locadora";
             this.Load += new System.EventHandler(this.Locadora_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgLocadora)).EndInit();
@@ -235,13 +272,15 @@ namespace CrudAula
         private System.Windows.Forms.TextBox tbDescricao;
         private System.Windows.Forms.TextBox tbAno;
         private System.Windows.Forms.DataGridView dgLocadora;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnDeletar;
+        private System.Windows.Forms.TextBox tbId;
+        private System.Windows.Forms.Label lbId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoria;
         private System.Windows.Forms.DataGridViewTextBoxColumn descricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ano;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnExcluir;
     }
 }
 

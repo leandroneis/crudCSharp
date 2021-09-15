@@ -21,6 +21,7 @@ namespace CrudAula
             tbCategoria.Clear();
             tbDescricao.Clear();
             tbAno.Clear();
+            tbId.Clear();
 
         }
 
@@ -30,7 +31,8 @@ namespace CrudAula
             try {
                 realizaConexaoBD.Open();
                 MySqlCommand comandoMysql = realizaConexaoBD.CreateCommand();
-                comandoMysql.CommandText = "SELECT * FROM LOCADORA WHERE ativoFilme = 1";
+                comandoMysql.CommandText = "SELECT id, nomeFilme, categoriaFilme, descricaoFilme, anoFilme FROM LOCADORA WHERE ativoFilme = 1";
+                Console.WriteLine(comandoMysql.CommandText);
                 MySqlDataReader reader = comandoMysql.ExecuteReader();
                 dgLocadora.Rows.Clear();
 
@@ -39,8 +41,8 @@ namespace CrudAula
                     DataGridViewRow row = (DataGridViewRow)dgLocadora.Rows[0].Clone();
                     row.Cells[0].Value = reader.GetInt32(0);//Id
                     row.Cells[1].Value = reader.GetString(1);//Nome do Filme
-                    row.Cells[2].Value = reader.GetString(2);//Descrição
-                    row.Cells[3].Value = reader.GetString(3);//Categoria
+                    row.Cells[2].Value = reader.GetString(2);//Categoria
+                    row.Cells[3].Value = reader.GetString(3);//Descricao
                     row.Cells[4].Value = reader.GetString(4);//Ano
                     dgLocadora.Rows.Add(row);
                 }
@@ -87,6 +89,54 @@ namespace CrudAula
             catch (Exception ex)
             {
                 MessageBox.Show("Can not open Connection!");
+            }
+        }
+
+        private void btnAlterar_Click(object sender, EventArgs e)
+        {
+            MySqlConnectionStringBuilder conexaoBD = conexaoBanco();
+            MySqlConnection realizaConexaoBD = new MySqlConnection(conexaoBD.ToString());
+            try
+            {
+                realizaConexaoBD.Open();
+                MySqlCommand comandoMysql = realizaConexaoBD.CreateCommand();
+
+                comandoMysql.CommandText = "UPDATE locadora SET nomeFilme = '" + tbNome.Text + "' , " +
+                    "descricaoFilme= '" + tbDescricao.Text + "' , " + 
+                    "categoriaFilme='" + tbCategoria.Text + "' , "+
+                    "anoFilme = '" + tbAno.Text + "' " +
+                    "WHERE id = "+tbId.Text + "";
+                
+                Console.WriteLine(comandoMysql.CommandText);
+                comandoMysql.ExecuteNonQuery();
+                realizaConexaoBD.Close();
+                MessageBox.Show("Atualizado com sucesso!");
+                atualizarGrid();
+                limparCampos();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can not open Connection!");
+            }
+        }
+
+        private void btnDeletar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgLocadora_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                if (e.ColumnIndex >= -1 && dgLocadora.Rows[e.RowIndex].Cells[0].Value != null) {
+                    dgLocadora.CurrentRow.Selected = true;
+                    tbId.Text = dgLocadora.Rows[e.RowIndex].Cells["id"].FormattedValue.ToString();
+                    tbNome.Text = dgLocadora.Rows[e.RowIndex].Cells["nome"].FormattedValue.ToString();
+                    tbCategoria.Text = dgLocadora.Rows[e.RowIndex].Cells["categoria"].FormattedValue.ToString();
+                    tbDescricao.Text = dgLocadora.Rows[e.RowIndex].Cells["descricao"].FormattedValue.ToString();
+                    tbAno.Text = dgLocadora.Rows[e.RowIndex].Cells["ano"].FormattedValue.ToString();
+                }
             }
         }
     }
